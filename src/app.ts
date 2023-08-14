@@ -1,6 +1,6 @@
 // import { URL } from 'url'
 import http from 'node:http'
-
+import requestHandler from './routes.js'
 // console.log(
 //   '🚀 ~ file: app.ts:5 ~ import.meta.url:',
 //   new URL('', import.meta.url)
@@ -9,9 +9,7 @@ import http from 'node:http'
 //   '🚀 ~ file: app.ts:5 ~ import.meta.url:',
 //   new URL('.', import.meta.url)
 // )
-function rqListener(req: http.IncomingMessage, res: http.ServerResponse) {
-  console.log('🚀 ~ file: app.ts:13 ~ rqListener ~ req:', req)
-}
-const server = http.createServer(rqListener)
+
+const server = http.createServer(requestHandler)
 
 server.listen(8080)
