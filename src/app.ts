@@ -1,15 +1,9 @@
-// import { URL } from 'url'
 import http from 'node:http'
-import requestHandler from './routes.js'
-// console.log(
-//   '🚀 ~ file: app.ts:5 ~ import.meta.url:',
-//   new URL('', import.meta.url)
-// )
-// console.log(
-//   '🚀 ~ file: app.ts:5 ~ import.meta.url:',
-//   new URL('.', import.meta.url)
-// )
 
-const server = http.createServer(requestHandler)
+import express from 'express'
+
+const app = express()
+
+const server = http.createServer(app)
 
 server.listen(3000)
