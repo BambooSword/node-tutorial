@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preStart": "tsc -w",
+    "preStart": "tsc",
     "start": "node dist/app.js"
   },
   "repository": {
