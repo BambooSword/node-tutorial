@@ -1,23 +1,13 @@
 import express from 'express'
 import fs, { open } from 'node:fs/promises'
 import os from 'node:os'
+import { URL } from 'node:url'
 const router = express.Router()
 
-router.get('/', (req, res, next) => {
-  res.write(`
-    <html>
-      <head>
-        <title>assignment 001</title>
-      </head>
-      <body>
-        <h1>Hello world</h1>
-        <form action="/create-user" method="POST">
-          <input type="text" name="username"><button type="submit">SUBMIT</button></input>
-        </form>
-      </body>
-    </html> 
-  `)
-  return res.end()
+router.get('/create-user', (req, res, next) => {
+  res.sendFile(
+    new URL('../../views/add-product.html', import.meta.url).pathname
+  )
 })
 router.post('/create-user', (req, res, next) => {
   const body: Uint8Array[] = []

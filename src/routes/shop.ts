@@ -1,20 +1,8 @@
 import express from 'express'
-
+import { URL } from 'node:url'
 const router = express.Router()
-
 router.get('/', (req, res, next) => {
-  res.setHeader('Content-Type', 'text/html')
-  res.write(`
-  <html>
-    <head>
-      <title>index</title>
-    </head>
-    <body>
-      <h1>Hello world</h1>
-    </body>
-  </html> 
-`)
-  res.end()
+  const url = new URL('../../views/shop.html', import.meta.url)
+  res.sendFile(url.pathname)
 })
-
 export default router
