@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preStart": "tsc",
+    "preStart": "tsc -w",
     "start": "nodemon dist/app.js"
   },
   "repository": {
@@ -24,7 +24,10 @@
   "homepage": "https://github.com/BambooSword/node-tutorial#readme",
   "devDependencies": {
     "@types/node": "^20.4.5",
+    "ejs": "^3.1.9",
+    "express-handlebars": "^7.1.2",
     "nodemon": "^3.0.1",
+    "pug": "^3.0.2",
     "typescript": "^5.1.6"
   },
   "dependencies": {

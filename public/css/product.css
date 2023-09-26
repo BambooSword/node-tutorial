@@ -1,0 +1,18 @@
+.form-control {
+  margin: 1rem 0;
+}
+.form-control label,
+.form-control input {
+  display: block;
+}
+.form-control input {
+  border: 1px solid #dbc441;
+  font: inherit;
+  border-radius: 2px;
+}
+button {
+  margin: 1rem 0;
+  border: 1px solid #dbc441;
+  color: #dbc441;
+  background-color: white;
+}

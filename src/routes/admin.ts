@@ -5,9 +5,10 @@ import { URL } from 'node:url'
 const router = express.Router()
 
 router.get('/create-user', (req, res, next) => {
-  res.sendFile(
-    new URL('../../views/add-product.html', import.meta.url).pathname
-  )
+  // res.sendFile(
+  //   new URL('../../views/add-product.html', import.meta.url).pathname
+  // )
+  res.render('add-product', { docTitle: 'Add The Product' })
 })
 router.post('/create-user', (req, res, next) => {
   const body: Uint8Array[] = []
