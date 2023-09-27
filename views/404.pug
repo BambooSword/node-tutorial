@@ -1,17 +1,7 @@
-doctype html
-html(lang="en")
-	head
-		meta(charset="UTF-8")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title Not Find
-		link(rel="stylesheet", href="/css/main.css")
-	body 
-			header.main-header
-				nav.main-header__nav
-					ul.main-header__list
-						li.main-header__item 
-							a(href="/") Shop
-						li.main-header__item 
-							a(href="/admin/create-user") Add Product
-			main
-				h1 Not Find The Page!
+extends layouts/main-layout.pug
+
+block title 
+	title Not Find 
+
+block content 
+	h1 Not find the Page!

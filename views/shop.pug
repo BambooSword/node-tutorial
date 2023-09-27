@@ -1,31 +1,24 @@
-doctype html
-html(lang="en")
-	head
-		meta(charset="UTF-8")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title #{docTitle}
-		link(rel="stylesheet", href="/css/main.css")
-	body 
-		header.main-header
-			nav.main-header__nav
-				ul.main-header__list
-					li.main-header__item 
-						a.active(href="/") Shop
-					li.main-header__item 
-						a(href="/admin/create-user") Add Product
-		main
-			if prods.length > 0
-				.grid 
-					each product in prods 
-						article.card.product-item 
-							header.card__header 
-								h1.product__title #{product}
-							.card__image
-								img(src="https://cdna.artstation.com/p/assets/images/images/001/785/410/large/dale-atendido-map1.jpg?1452705133", alt="rebellion sword")
-							.card__content 
-								h2.product__price $19.99
-								p.product__description A very interesting book about so many even more 
-								.card__actions 
-									button.btn Add to Cart
-			else 
-				h1 No Products	
+extends layouts/main-layout.pug
+
+block title 
+	title #{docTitle}
+
+block content 
+	main
+		if prods.length > 0
+			.grid 
+				each product in prods 
+					article.card.product-item 
+						header.card__header 
+							h1.product__title #{product}
+						.card__image
+							img(src="https://cdna.artstation.com/p/assets/images/images/001/785/410/large/dale-atendido-map1.jpg?1452705133", alt="rebellion sword")
+						.card__content 
+							h2.product__price $19.99
+							p.product__description A very interesting book about so many even more 
+							.card__actions 
+								button.btn Add to Cart
+		else 
+			h1 No Products	
+
+
