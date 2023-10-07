@@ -1,6 +1,6 @@
 {
   "name": "node-tutorial",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "my learning path of node",
   "main": "dist/app.js",
   "type": "module",
