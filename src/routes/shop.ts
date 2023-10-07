@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
     for await (const line of file.readLines()) {
       users.push(line)
     }
-    res.render('shop', { prods: users, docTitle: 'My Shop' }) // shop.pug
+    res.render('shop', { prods: users, docTitle: 'My Shop', path: '/' }) // shop.pug
   })
 })
 export default router

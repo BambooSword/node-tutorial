@@ -22,7 +22,7 @@ app.use('/admin', adminRouter)
 app.use(shopRouter)
 
 app.use((req, res, next) => {
-  res.status(404).render('404')
+  res.status(404).render('404', { docTitle: 'Not Find' })
 })
 // const server = http.createServer(app)
 

@@ -8,7 +8,10 @@ router.get('/create-user', (req, res, next) => {
   // res.sendFile(
   //   new URL('../../views/add-product.html', import.meta.url).pathname
   // )
-  res.render('add-product', { docTitle: 'Add The Product' })
+  res.render('add-product', {
+    docTitle: 'Add The Product',
+    path: '/admin/create-user',
+  })
 })
 router.post('/create-user', (req, res, next) => {
   const body: Uint8Array[] = []
