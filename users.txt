@@ -1,9 +1,2 @@
-bamboo
-sword
-
-12
-hello
-123
-bamboo sword
 root
-qwer
+root

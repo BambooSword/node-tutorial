@@ -2,7 +2,7 @@ import https from 'node:https'
 import fs from 'node:fs'
 import { URL } from 'node:url'
 import express from 'express'
-import bodyParser from 'body-parser'
+// import bodyParser from 'body-parser'
 import adminRouter from './routes/admin.js'
 import shopRouter from './routes/shop.js'
 
@@ -15,9 +15,9 @@ const app = express()
 
 app.set('view engine', 'pug')
 app.set('views', 'views')
-app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(new URL('../public', import.meta.url).pathname))
-// app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }))
 app.use('/admin', adminRouter)
 app.use(shopRouter)
 
