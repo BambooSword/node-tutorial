@@ -5,7 +5,7 @@ import express from 'express'
 // import bodyParser from 'body-parser'
 import adminRouter from './routes/admin.js'
 import shopRouter from './routes/shop.js'
-
+import { get404 } from './controler/error.js'
 const options = {
   key: fs.readFileSync(new URL('../localhost-key.pem', import.meta.url)),
   cert: fs.readFileSync(new URL('../localhost.pem', import.meta.url)),
@@ -21,9 +21,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/admin', adminRouter)
 app.use(shopRouter)
 
-app.use((req, res, next) => {
-  res.status(404).render('404', { docTitle: 'Not Find' })
-})
+app.use(get404)
 // const server = http.createServer(app)
 
 // server.listen(3000)
