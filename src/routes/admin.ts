@@ -1,11 +1,21 @@
 import express from 'express'
+import {
+  getAddProduct,
+  getProducts,
+  postAddProduct,
+} from '../controler/admin.js'
 
-import { URL } from 'node:url'
-import { renderUser, createUser, getUsers } from '../controler/user.js'
 const router = express.Router()
 
-router.get('/create-user', renderUser)
-router.post('/create-user', createUser)
+// /admin/add-product => GET
+router.get('/add-product', getAddProduct)
 
-router.get('/users', getUsers)
+// /admin/products => GET
+router.get('/products', getProducts)
+
+// /admin/edit-product => GET
+// router.get('/edit-product', adminController.getEditProduct);
+
+// /admin/add-product => POST
+router.post('/add-product', postAddProduct)
 export default router

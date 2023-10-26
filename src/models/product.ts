@@ -3,7 +3,12 @@ import os from 'node:os'
 import { URL } from 'node:url'
 const dataFile = new URL('../../data/users.json', import.meta.url)
 export default class User {
-  constructor(public name: string) {}
+  constructor(
+    public title: string,
+    public imageUrl: string,
+    public description: string,
+    public price: string
+  ) {}
   async save() {
     const users = await fs
       .readFile(dataFile, { encoding: 'utf-8' })
@@ -15,7 +20,7 @@ export default class User {
   }
 
   static async fetchAll() {
-    const users: { name: string }[] = await fs
+    const users: { title: string }[] = await fs
       .readFile(dataFile, {
         encoding: 'utf-8',
       })

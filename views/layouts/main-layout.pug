@@ -2,16 +2,28 @@ doctype html
 html(lang="en")
 	head
 		meta(charset="UTF-8")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title #{docTitle} 
-		link(rel="stylesheet", href="/css/main.css")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		title #{pageTitle} 
+		link(rel="stylesheet" href="/css/main.css")
 		block styles
 	body 
-			header.main-header
-				nav.main-header__nav
-					ul.main-header__list
-						li.main-header__item 
-							a(href="/", class=(path === '/' ? 'active': '')) Shop
-						li.main-header__item 
-							a(href="/admin/create-user", class=(path === '/admin/create-user' ? 'active': '')) Add Product
-			block content
+		header.main-header
+			nav.main-header__nav
+				ul.main-header__item-list
+					//- li.main-header__item 
+					//- 	a(href="/", class=(path === '/' ? 'active': '')) Shop
+					//- li.main-header__item 
+					//- 	a(href="/admin/create-user", class=(path === '/admin/create-user' ? 'active': '')) Add Product
+					li.main-header__item
+						a(class=( path === '/' ? 'active' : ''), href="/") Shop
+					li.main-header__item
+						a(class=(path === '/products' ? 'active' : ''), href="/products") Products
+					li.main-header__item
+						a(class=(path === '/cart' ? 'active' : ''), href="/cart") Cart
+					li.main-header__item
+						a(class=(path === '/orders' ? 'active' : ''), href="/orders") Orders
+					li.main-header__item
+						a(class=(path === '/admin/add-product' ? 'active' : ''), href="/admin/add-product") Add Product
+					li.main-header__item
+						a(class=(path === '/admin/products' ? 'active' : ''), href="/admin/products") Admin Product
+		block content

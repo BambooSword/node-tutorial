@@ -1,5 +1,5 @@
 import type { RequestHandler } from 'express'
-import User from '../models/user.js'
+import User from '../models/product.js'
 const renderUser: RequestHandler = (req, res, next) => {
   // res.sendFile(
   //   new URL('../../views/add-product.html', import.meta.url).pathname

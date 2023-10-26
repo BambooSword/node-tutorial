@@ -1,6 +1,6 @@
 import { open } from 'node:fs/promises'
 import type { RequestHandler } from 'express'
-import User from '../models/user.js'
+import User from '../models/product.js'
 
 const getShop: RequestHandler = async (req, res, next) => {
   const url = new URL('../../views/shop.html', import.meta.url)
