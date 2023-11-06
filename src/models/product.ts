@@ -1,5 +1,4 @@
-import fs, { open } from 'node:fs/promises'
-import os from 'node:os'
+import fs from 'node:fs/promises'
 import { URL } from 'node:url'
 const dataFile = new URL('../../data/users.json', import.meta.url)
 export default class User {
@@ -37,7 +36,9 @@ export default class User {
     const product = await fs
       .readFile(dataFile, { encoding: 'utf-8' })
       .then(file => {
-        return JSON.parse(file || '[]').find((item: User) => item.id === id)
+        return JSON.parse(file || '[]').find(
+          (item: User) => item.id === id
+        ) as User
       })
 
     return product
