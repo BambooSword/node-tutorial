@@ -21,7 +21,7 @@ const postAddProduct: RequestHandler = (req, res, next) => {
 }
 
 const getAddProduct: RequestHandler = (req, res, next) => {
-  res.render('admin/add-product', {
+  res.render('admin/edit-product', {
     pageTitle: 'Add Product',
     path: '/admin/add-product',
   })
@@ -30,10 +30,14 @@ const getAddProduct: RequestHandler = (req, res, next) => {
 const getEditProduct: RequestHandler = (req, res, next) => {
   // fetch the specific product details
   const product = {}
+  const editMode = req.query.editing
+  if (!editMode) {
+    res.redirect('/')
+  }
   res.render('admin/edit-product', {
-    pageTitle: '',
+    pageTitle: 'Edit Product',
     path: '/admin/edit-product',
-    product: product,
+    editing: editMode,
   })
 }
 const postEditProduct: RequestHandler = (req, res, next) => {}
