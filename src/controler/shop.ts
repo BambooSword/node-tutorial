@@ -13,7 +13,6 @@ export const getProducts: RequestHandler = async (req, res, next) => {
 
 export const getProduct: RequestHandler = async (req, res, next) => {
   const productId = req.params.productId
-  console.log('🚀 ~ file: shop.ts:14 ~ productId:', productId)
   const product = await Product.findById(productId)
 
   res.render('shop/product-details', {
@@ -32,18 +31,31 @@ export const getIndex: RequestHandler = async (req, res, next) => {
   })
 }
 
-export const getCart: RequestHandler = (req, res, next) => {
+export const getCart: RequestHandler = async (req, res, next) => {
   res.render('shop/cart', {
     pageTitle: 'Your Cart',
     path: '/cart',
+    products: await Cart.getProducts(),
   })
 }
 
 export const postCart: RequestHandler = async (req, res, next) => {
   const productId = req.body.productId
   const product = await Product.findById(productId)
-  console.log('🚀 ~ file: shop.ts:42 ~ productId:', productId)
   Cart.addProduct(productId, product.price)
+  res.redirect('/cart')
+}
+export const deleteCartItem: RequestHandler = async (req, res, next) => {
+  const productId = req.params.productId
+
+  const price: string = req.body.price
+  console.log(
+    '🚀 ~ file: shop.ts:52 ~ constdeleteCartItem:RequestHandler= ~ price:',
+    price
+  )
+
+  const product = await Cart.deleteById(productId, price)
+  console.log('🚀 ~ file: shop.ts:42 ~ productId:', product)
   res.redirect('/cart')
 }
 export const getOrders: RequestHandler = (req, res, next) => {

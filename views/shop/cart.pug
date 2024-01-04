@@ -1,2 +1,26 @@
 extend ../layouts/main-layout.pug
 
+block styles 
+	link(rel="stylesheet" href="/css/product.css")
+
+
+block content
+	main
+		if products.length > 0
+			.grid
+				each product in products
+					article.card.product-item
+						header.card__header
+							h1.product__title #{product.title}
+							div.card__image
+								img(src=(product.imageUrl), alt=(product.title))
+							div.card__content
+								h2.product__price #{product.price}
+								p.product__description #{product.description}
+							div.card__actions
+								a.btn(href=(`/products/${product.id}`)) Detail
+								form(action=`/delete-cart-item/${product.id}` method="POST")
+									input(type="hidden" name="price" value=`${product.price}`)
+									button.btn(type="submit") Delete
+		else 
+			h1 No Products Found

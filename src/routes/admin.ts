@@ -3,6 +3,8 @@ import {
   getAddProduct,
   getProducts,
   postAddProduct,
+  postEditProduct,
+  postDeleteProduct,
   getEditProduct,
 } from '../controler/admin.js'
 
@@ -16,8 +18,10 @@ router.get('/edit-product/:productId', getEditProduct)
 router.get('/products', getProducts)
 
 // /admin/edit-product => GET
-// router.get('/edit-product', adminController.getEditProduct);
+router.post('/edit-product/:productId', postEditProduct)
 
 // /admin/add-product => POST
 router.post('/add-product', postAddProduct)
+// /admin/delete-product => POST
+router.post('/delete-product/:productId', postDeleteProduct)
 export default router

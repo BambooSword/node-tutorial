@@ -2,27 +2,42 @@ import fs from 'node:fs/promises'
 import { URL } from 'node:url'
 const dataFile = new URL('../../data/users.json', import.meta.url)
 export default class User {
-  public id: string
   constructor(
+    public id: string,
     public title: string,
     public imageUrl: string,
     public description: string,
     public price: string
-  ) {
-    this.id = Math.random().toString()
-  }
+  ) {}
   async save() {
-    const users = await fs
-      .readFile(dataFile, { encoding: 'utf-8' })
-      .then(file => {
-        return JSON.parse(file || '[]')
-      })
-    users.push(this)
-    fs.writeFile(dataFile, JSON.stringify(users))
+    let users: User[] = []
+    try {
+      const file = await fs.readFile(dataFile, { encoding: 'utf-8' })
+      users = JSON.parse(file || '[]')
+    } catch (error) {
+      // Handle file read error
+    }
+
+    const existingProductIndex = users.findIndex(
+      (item: User) => item.id === this.id
+    )
+
+    if (existingProductIndex !== -1) {
+      users[existingProductIndex] = this
+    } else {
+      this.id = Math.random().toString()
+      users.push(this)
+    }
+
+    try {
+      await fs.writeFile(dataFile, JSON.stringify(users))
+    } catch (error) {
+      // Handle file write error
+    }
   }
 
   static async fetchAll() {
-    const users: { title: string }[] = await fs
+    const users: User[] = await fs
       .readFile(dataFile, {
         encoding: 'utf-8',
       })
@@ -42,5 +57,15 @@ export default class User {
       })
 
     return product
+  }
+  static async deleteById(id: string) {
+    const users = await fs
+      .readFile(dataFile, { encoding: 'utf-8' })
+      .then(file => {
+        return JSON.parse(file || '[]')
+      })
+    const updatedUsers = users.filter((item: User) => item.id !== id)
+
+    fs.writeFile(dataFile, JSON.stringify(updatedUsers))
   }
 }
